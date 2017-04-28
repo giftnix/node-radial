@@ -1,0 +1,26 @@
+{
+  "name": "node-radial",
+  "version": "0.1.0",
+  "description": "NodeJS SDK for the Radial APIs",
+  "main": "radial.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/giftnix/node-radial.git"
+  },
+  "keywords": [
+    "radial",
+    "api",
+    "rest",
+    "wrapper",
+    "paypal",
+    "xml"
+  ],
+  "author": "Giftnix",
+  "license": "MIT",
+  "dependencies": {
+    "request": "2.x.x",
+    "xml-js": "1.x.x"
+  },
+  "devDependencies": {}
+}
