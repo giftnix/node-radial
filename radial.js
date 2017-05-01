@@ -1,7 +1,5 @@
 /* LIB */
 
-const setExpress = require('./lib/paypal/setExpress');
-
 /* CONSTRUCTOR */
 
 (function () {
@@ -17,24 +15,29 @@ const setExpress = require('./lib/paypal/setExpress');
 
   /* PUBLIC FUNCTIONS */
 
-  Radial.setup = function (setupParams) {
-    if (!setupParams) {
+  Radial.configure = function (configParams) {
+    if (!configParams) {
       throw new Error('Please include params for the Radial module constructor.');
-    } else if (!setupParams.storeCode) {
+    } else if (!configParams.storeCode) {
       throw new Error('Missing "storeCode" in the Radial module params.');
-    } else if (!setupParams.apiKey) {
+    } else if (!configParams.apiKey) {
       throw new Error('Missing "apiKey" in the Radial module params.');
-    } else if (!setupParams.uriBaseDomain) {
+    } else if (!configParams.uriBaseDomain) {
       throw new Error('Missing "uriBaseDomain" in the Radial module params.');
     }
 
-    params = setupParams;
-    params.apiVersion = setupParams.apiVersion ? setupParams.apiVersion.toString() : defaults.apiVersion;
+    params = configParams;
+    params.apiVersion = configParams.apiVersion ? configParams.apiVersion.toString() : defaults.apiVersion;
+    Radial.params = params;
+
+    Radial.paypal = require('./lib/paypal/index');
 
     return this;
   };
 
-  Radial.setExpress = setExpress;
+  Radial.getParams = function () {
+    return Radial.params;
+  };
 
   /* NPM EXPORT */
 
