@@ -17,17 +17,55 @@ Require the module and call `configure()`:
 ```
 var radial = require('node-radial').configure({
   storeCode: '',
-  apiKey: ''
+  apiKey: '',
+  uriBaseDomain: ''
 });
 ```
 
 ### Optional Setup Parameters
 
-- `version` - API version as a numeric string **_defaults to '1.0'_**
+- `apiVersion` - API version as a numeric string **_defaults to '1.0'_**
+
+## PayPal Processing
+
+### PayPal SetExpress
+
+The first API in PayPal checkout flow. See the following reference for details.
+
+<https://docs.ptf.radial.com/Content/Topics/payments/paypal-set-express.htm>
+
+```
+var lineItems = [{
+  name: 'Cool Product',
+  quantity: 2,
+  amount: 9.99
+}];
+
+radial.paypal.setExpress({
+  orderId: '12345',
+  returnUrl: '',
+  cancelUrl: '',
+  localeCode: 'en_US',
+  currencyCode: 'USD',
+  addressOverride: 0,
+  noShippingAddressDisplay: 1,
+  shippingTotal: 2.00,
+  taxTotal: 1.23,
+  lineItems: lineItems,
+  installment: false,
+  recurring: false
+}, function(err, response) {
+  // response = {
+  //   responseCode: 'Success',
+  //   orderId: '12345',
+  //   token: 'EC-5YE59312K56892714'
+  // };
+});
+```
 
 ## CHANGELOG
 
-- **0.1.0:** Initial release.
+- **0.1.0:** Initial release. Only PayPal setExpress is available so far.
 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: https://github.com/giftnix/radial/blob/master/LICENSE
