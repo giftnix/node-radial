@@ -47,24 +47,91 @@ radial.paypal.setExpress({
   cancelUrl: '',
   localeCode: 'en_US',
   currencyCode: 'USD',
-  addressOverride: 0,
-  noShippingAddressDisplay: 1,
+  addressOverride: 0, // optional
+  noShippingAddressDisplay: 1, // optional
+  shipToName: 'John Doe', // optional
+  shippingAddress: { // optional
+      line1: '',
+      line2: '',
+      line3: '',
+      line4: '',
+      city: '',
+      mainDivision: '',
+      countryCode: '',
+      postalCode: ''
+  },
   shippingTotal: 2.00,
   taxTotal: 1.23,
   lineItems: lineItems,
-  installment: false,
-  recurring: false
+  installment: false, // optional
+  recurring: false // optional
 }, function(err, response) {
-  // response = {
-  //   responseCode: 'Success',
-  //   orderId: '12345',
-  //   token: 'EC-5YE59312K56892714'
-  // };
+  /*
+  response = {
+    responseCode: 'Success',
+    orderId: '12345',
+    token: 'EC-5YE59312K56892714'
+  };
+  */
+});
+```
+
+### PayPal GetExpress
+
+The second API in PayPal checkout flow. See the following reference for details.
+
+<https://docs.ptf.radial.com/Content/Topics/payments/paypal-get-express.htm>
+
+```
+radial.paypal.getExpress({
+  orderId: '12345',
+  token: 'EC-5YE59312K56892714',
+  currencyCode: 'USD'
+}, function(err, response) {
+  /*
+  response = {
+    responseCode: 'Success',
+    orderId: '12345',
+    payerId: '',
+    payerEmail: '',
+    payerStatus: '',
+    payerName: {
+      honorific: '',
+      firstName: '',
+      middleName: '',
+      lastName: ''
+    },
+    payerCountry: '',
+    payerPhone: '',
+    billingAddress: {
+      line1: '',
+      line2: '',
+      line3: '',
+      line4: '',
+      city: '',
+      mainDivision: '',
+      countryCode: '',
+      postalCode: ''
+    },
+    shippingAddress: {
+      line1: '',
+      line2: '',
+      line3: '',
+      line4: '',
+      city: '',
+      mainDivision: '',
+      countryCode: '',
+      postalCode: ''
+    },
+    shipToName: ''
+  }
+  */
 });
 ```
 
 ## CHANGELOG
 
+- **0.1.1:** Add PayPal getExpress endpoint.
 - **0.1.0:** Initial release. Only PayPal setExpress is available so far.
 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square

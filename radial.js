@@ -44,7 +44,7 @@
   if (typeof module === 'object' && module.exports) {
     module.exports = Radial;
   } else {
-    throw new Error('This module only works with NPM in NodeJS/IO.JS environments.');
+    throw new Error('This module only works with NPM in NodeJS environments.');
   }
 
 }());
