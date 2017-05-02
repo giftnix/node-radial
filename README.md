@@ -161,13 +161,47 @@ radial.paypal.doExpress({
   shippingTotal: 2.00,
   taxTotal: 1.23,
   lineItems: lineItems,
-  recurring: false // optional
+  recurring: false, // optional
+  requestId: '1234567'
 }, function(err, response) {
   /*
   response = {
     responseCode: 'Success',
     orderId: '12345',
-    token: 'EC-5YE59312K56892714'
+    transactionId: 'O-3A919253XG323924A',
+    paymentInfo: {
+      paymentStatus: 'Pending',
+      paymentReason: 'Order',
+      paymentCode: '12345'
+    }
+  };
+  */
+});
+```
+
+### PayPal DoAuthorization
+
+The final API in PayPal checkout flow. See the following reference for details.
+
+<https://docs.ptf.radial.com/Content/Topics/payments/paypal-do-authorization.htm>
+
+```
+radial.paypal.doExpress({
+  orderId: '12345',
+  amount: 23.21,
+  currencyCode: 'USD',
+  requestId: '1234567'
+}, function(err, response) {
+  /*
+  response = {
+    responseCode: 'Success',
+    orderId: '12345',
+    transactionId: 'O-3A919253XG323924A',
+    paymentInfo: {
+      paymentStatus: 'Pending',
+      paymentReason: 'Authorization',
+      paymentCode: '1234'
+    }
   };
   */
 });
@@ -175,8 +209,8 @@ radial.paypal.doExpress({
 
 ## CHANGELOG
 
-- **0.1.2:** Add PayPal doExpress endpoint.
-- **0.1.1:** Add PayPal getExpress endpoint.
+- **0.1.2:** Add PayPal doExpress and doAuthorization endpoints.
+- **0.1.1:** Add PayPal getExpress endpoint and generalize the sendRequest lib.
 - **0.1.0:** Initial release. Only PayPal setExpress is available so far.
 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
