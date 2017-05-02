@@ -129,8 +129,53 @@ radial.paypal.getExpress({
 });
 ```
 
+### PayPal DoExpress
+
+The third API in PayPal checkout flow. See the following reference for details.
+
+<https://docs.ptf.radial.com/Content/Topics/payments/paypal-do-express.htm>
+
+```
+var lineItems = [{
+  name: 'Cool Product',
+  quantity: 2,
+  amount: 9.99
+}];
+
+radial.paypal.doExpress({
+  orderId: '12345',
+  token: '',
+  currencyCode: 'USD',
+  pickUpStoreId: 'StoreName StoreNumber', // optional
+  shipToName: 'John Doe', // optional
+  shippingAddress: { // optional
+      line1: '',
+      line2: '',
+      line3: '',
+      line4: '',
+      city: '',
+      mainDivision: '',
+      countryCode: '',
+      postalCode: ''
+  },
+  shippingTotal: 2.00,
+  taxTotal: 1.23,
+  lineItems: lineItems,
+  recurring: false // optional
+}, function(err, response) {
+  /*
+  response = {
+    responseCode: 'Success',
+    orderId: '12345',
+    token: 'EC-5YE59312K56892714'
+  };
+  */
+});
+```
+
 ## CHANGELOG
 
+- **0.1.2:** Add PayPal doExpress endpoint.
 - **0.1.1:** Add PayPal getExpress endpoint.
 - **0.1.0:** Initial release. Only PayPal setExpress is available so far.
 
