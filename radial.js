@@ -10,7 +10,8 @@
 
   var params;
   const defaults = {
-    apiVersion: '1.0'
+    apiVersion: '1.0',
+    environment: process.env.NODE_ENV || 'development'
   };
 
   /* PUBLIC FUNCTIONS */
@@ -28,9 +29,12 @@
 
     params = configParams;
     params.apiVersion = configParams.apiVersion ? configParams.apiVersion.toString() : defaults.apiVersion;
+    params.environment = configParams.environment ? configParams.environment : defaults.environment;
     Radial.params = params;
 
-    Radial.paypal = require('./lib/paypal/index');
+    Radial.nonce = require('./lib/nonce');
+    Radial.creditCard = require('./lib/payments/creditCard/index');
+    Radial.paypal = require('./lib/payments/paypal/index');
 
     return this;
   };

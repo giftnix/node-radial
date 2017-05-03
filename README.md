@@ -25,6 +25,23 @@ var radial = require('node-radial').configure({
 ### Optional Setup Parameters
 
 - `apiVersion` - API version as a numeric string **_defaults to '1.0'_**
+- `environment` - Set to either `development` or `production` **_defaults to the value of `NODE_ENV` or `development` if not set_**
+
+## Tokenization and 3D Secure
+
+<https://docs.ptf.radial.com/Content/Topics/payments/payment-3ds-tokenization.htm>
+
+### Get a Nonce
+
+```
+radial.nonce(function(err, response) {
+  /*
+  response = {
+    nonce: '1a83cd28-3847-4a41-8c52-48cc5ab1af61',
+    expiresInSeconds: 1000
+  };
+});
+```
 
 ## PayPal Processing
 
@@ -209,6 +226,7 @@ radial.paypal.doExpress({
 
 ## CHANGELOG
 
+- **0.1.3:** Add method to get a nonce for use with Radial's JavaScript library.
 - **0.1.2:** Add PayPal doExpress and doAuthorization endpoints.
 - **0.1.1:** Add PayPal getExpress endpoint and generalize the sendRequest lib.
 - **0.1.0:** Initial release. Only PayPal setExpress is available so far.
