@@ -87,7 +87,8 @@ radial.paypal.setExpress({
   response = {
     responseCode: 'Success',
     orderId: '12345',
-    token: 'EC-5YE59312K56892714'
+    token: 'EC-5YE59312K56892714',
+    redirectUrl: 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-5YE59312K56892714'
   };
   */
 });
@@ -188,8 +189,8 @@ radial.paypal.doExpress({
     transactionId: 'O-3A919253XG323924A',
     paymentInfo: {
       paymentStatus: 'Pending',
-      paymentReason: 'Order',
-      paymentCode: '12345'
+      pendingReason: 'Order',
+      reasonCode: '12345'
     }
   };
   */
@@ -216,8 +217,8 @@ radial.paypal.doExpress({
     transactionId: 'O-3A919253XG323924A',
     paymentInfo: {
       paymentStatus: 'Pending',
-      paymentReason: 'Authorization',
-      paymentCode: '1234'
+      pendingReason: 'Authorization',
+      reasonCode: '1234'
     }
   };
   */
@@ -226,7 +227,7 @@ radial.paypal.doExpress({
 
 ## CHANGELOG
 
-- **0.1.3:** Add method to get a nonce for use with Radial's JavaScript library.
+- **0.1.3:** Add method to get a nonce for use with Radial's JavaScript library. SetExpress returns a `redirectUrl` in addition to the raw token. Finalize doExpress method.
 - **0.1.2:** Add PayPal doExpress and doAuthorization endpoints.
 - **0.1.1:** Add PayPal getExpress endpoint and generalize the sendRequest lib.
 - **0.1.0:** Initial release. Only PayPal setExpress is available so far.
