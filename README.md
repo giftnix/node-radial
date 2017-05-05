@@ -204,7 +204,7 @@ The final API in PayPal checkout flow. See the following reference for details.
 <https://docs.ptf.radial.com/Content/Topics/payments/paypal-do-authorization.htm>
 
 ```
-radial.paypal.doExpress({
+radial.paypal.doAuthorization({
   orderId: '12345',
   amount: 23.21,
   currencyCode: 'USD',
@@ -215,9 +215,9 @@ radial.paypal.doExpress({
     responseCode: 'Success',
     orderId: '12345',
     transactionId: 'O-3A919253XG323924A',
-    paymentInfo: {
+    authorizationInfo: {
       paymentStatus: 'Pending',
-      pendingReason: 'Authorization',
+      pendingReason: 'authorization',
       reasonCode: '1234'
     }
   };
@@ -227,6 +227,7 @@ radial.paypal.doExpress({
 
 ## CHANGELOG
 
+- **0.1.4:** Fixes for PayPal doAuthorization endpoint.
 - **0.1.3:** Add method to get a nonce for use with Radial's JavaScript library. SetExpress returns a `redirectUrl` in addition to the raw token. Finalize doExpress method.
 - **0.1.2:** Add PayPal doExpress and doAuthorization endpoints.
 - **0.1.1:** Add PayPal getExpress endpoint and generalize the sendRequest lib.
