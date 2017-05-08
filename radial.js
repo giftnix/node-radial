@@ -35,6 +35,7 @@
     Radial.nonce = require('./lib/nonce');
     Radial.creditCard = require('./lib/payments/creditCard/index');
     Radial.paypal = require('./lib/payments/paypal/index');
+    Radial.risk = require('./lib/risk/index');
 
     return this;
   };
