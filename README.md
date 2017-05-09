@@ -225,6 +225,18 @@ radial.paypal.doAuthorization({
 });
 ```
 
+## Fraud Management Processing
+
+## Risk Assessment
+
+This API has a lot of intricacies, with lengthy and complex requirements and optional parameters. Please refer to the Radial documentation to know what is required, and the type of data needed for the API. Because of the API's complexity and wide possibility space, `node-radial` does very little to error check for you. It simply maps your block of JSON data to Radial's required XML data. Below is an example with all possible parameters entered.
+
+<https://docs.ptf.radial.com/Content/Topics/risk/risk-assessment-api.htm>
+
+```
+placeholder
+```
+
 ## CHANGELOG
 
 - **0.1.4:** Fixes for PayPal doAuthorization endpoint.
