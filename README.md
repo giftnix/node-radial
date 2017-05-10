@@ -234,11 +234,205 @@ This API has a lot of intricacies, with lengthy and complex requirements and opt
 <https://docs.ptf.radial.com/Content/Topics/risk/risk-assessment-api.htm>
 
 ```
-placeholder
+RADIAL.risk.assess({
+  order: { // REQUIRED
+    orderId: '123456', // REQUIRED
+    promoCode: '$1 Off Returning Customer',
+    originalOrderId: '123-456',
+    webOrderId: '123-456',
+    referenceOrderId: '1234567890',
+    orderCategory: 'MODIFIED',
+    orderModifiedBy: 'John Doe',
+    customerList: [{ // REQUIRED
+      personName: { // REQUIRED
+        honorific: 'Mr',
+        firstName: 'John', // REQUIRED
+        middleName: 'Smith',
+        lastName: 'Doe', // REQUIRED
+        suffix: 'Sr'
+      },
+      email: 'johndoe12345@gmail.com',
+      telephone: {
+        number: '4805551212', // REQUIRED
+        location: 'Home'
+      },
+      address: {
+        id: 'BID-201703261515496410804517', // REQUIRED
+        line1: '123 Test St', // REQUIRED
+        line2: 'BLANK',
+        line3: 'BLANK',
+        lin4: 'BLANK',
+        buildingName: 'BLANK',
+        poBox: 'BLANK',
+        city: 'Austin', // REQUIRED
+        mainDivision: 'TX',
+        countryName: 'United States',
+        countryCode: 'USA', // REQUIRED
+        postalCode: '78759'
+      },
+      memberLoggedIn: true, // REQUIRED
+      loyalty: {
+        totalPoints: 12,
+        status: 'Active',
+        signupDate: new Date(),
+        remark: 'BLANK',
+        programId: '12345',
+        membershipId: '98765', // REQUIRED
+        userId: '56789',
+        loyalLevel: 'Gold',
+        expireDate: new Date(),
+        effectiveDate: new Date(),
+        currentPoints: 10,
+        vendorCode: 'MyRewards',
+        clubStatus: 'Active',
+        memberLoggedIn: true, // REQUIRED
+        lastLogin: new Date(),
+        userTenure: 94,
+        userPassword: '012394asjdfkasjdf902394u12394',
+        failedLoginAttempts: 2
+      },
+      currencyCode: 'USD' // REQUIRED
+    }],
+    shippingList: [{
+      addressId: '1234', // REQUIRED
+      shipmentId: '1234', // REQUIRED
+      currencyCode: 'USD', // REQUIRED
+      amountBeforeTax: 12.34,
+      amountAfterTax: 13.36, // REQUIRED
+      shippingMethod: 'UPS Ground' // REQUIRED
+    }],
+    lineItems: [{
+      id: '1234', // REQUIRED
+      shipmentId: '1234', // REQUIRED
+      totalAmount: 12.34, // REQUIRED
+      unitCostAmount: 12.34,
+      currencyCode: 'USD', // REQUIRED
+      quantity: 1, // REQUIRED
+      productName: 'Graphic T-Shirt',
+      productDescription: 'BLANK',
+      weight: 2,
+      weightUnit: 'pound',
+      productCategory: 'Shirts',
+      promoCode: 'BLANK',
+      itemId: '123495912304kasd0f23'
+    }],
+    externalRiskResults: [{
+      score: 0.2,
+      code: 'Low Risk',
+      source: 'MyFraudBudy'
+    }],
+    shoppingSession: {
+      timeOnSite: 8.12,
+      returnCustomer: true,
+      itemsRemoved: true
+    },
+    paymentCard: {
+      cardHolderName: 'John Doe', // REQUIRED
+      paymentAccountUniqueIdIsToken: false, // REQUIRED
+      paymentAccountUniqueId: 'JUDDXBXXXXXXA', // REQUIRED
+      expireDate: new Date(),
+      orderAppiId: 'BLANK',
+      paymentSessionId: '0006302964495',
+      gatewayKey: 'BLANK',
+      cardType: 'Visa'
+    },
+    payment: {
+      authorization: {
+        decline: false, // REQUIRED
+        code: 'BLANK'
+      },
+      email: 'johndoe12345@gmail.com',
+      personName: {
+        honorific: 'Mr',
+        firstName: 'John', // REQUIRED
+        middleName: 'Smith',
+        lastName: 'Doe', // REQUIRED
+        suffix: 'Sr'
+      },
+      address: {
+        id: 'BID-201703261515496410804517', // REQUIRED
+        line1: '123 Test St', // REQUIRED
+        line2: 'BLANK',
+        line3: 'BLANK',
+        lin4: 'BLANK',
+        buildingName: 'BLANK',
+        poBox: 'BLANK',
+        city: 'Austin', // REQUIRED
+        mainDivision: 'TX',
+        countryName: 'United States',
+        countryCode: 'USA', // REQUIRED
+        postalCode: '78759'
+      },
+      telephone: {
+        number: '4805551212', // REQUIRED
+        location: 'Home'
+      },
+      transactionResponses: [{
+        type: 'PayPalPayer', // REQUIRED
+        response: 'verified' // REQUIRED
+      }],
+      paymentTransactionDate: new Date(), // REQUIRED
+      paymentTransactionTypeCode: 'PY', // REQUIRED
+      currencyCode: 'USD', // REQUIRED
+      amount: 12.34, // REQUIRED
+      accountIdIsToken: true,
+      accountId: 'JUDDXBXXXXXXA',
+      tenderClass: 'BLANK' // REQUIRED
+    },
+    costTotals: { // REQUIRED
+      currencyCode: 'USD', // REQUIRED
+      amountBeforeTax: 12.34,
+      amountAfterTax: 12.34 // REQUIRED
+    },
+    failedCcNumber: 0
+  },
+  serverInfo: { // REQUIRED
+    time: new Date(), // REQUIRED
+    tzOffset: '-6', // REQUIRED
+    tzOffsetRaw: '-6',
+    dstActive: true // REQUIRED
+  },
+  deviceInfo: {
+    jsCollectorData: '0349123jf9dslkfj934j123r8jfdy8f98dhaf9asdf',
+    sessionId: '0349123asdfas0-3-4192df',
+    deviceIp: '10.0.0.1',
+    deviceHostname: 'www.giftnix.com',
+    httpHeaders: [{
+      name: 'accept-language', // REQUIRED
+      value: 'en-us'
+    }],
+    userCookie: '%5BCookies+id%3D639672634%5D'
+  },
+  customPropertyGroups: [{
+    groupName: 'BLANK', // REQUIRED
+    properties: [{ // REQUIRED
+      name: 'A STRING', // REQUIRED
+      value: 'string value' // String, Number, or Date - REQUIRED
+    }, { // REQUIRED
+      name: 'A NUMBER', // REQUIRED
+      value: 42 // String, Number, or Date - REQUIRED
+    }, { // REQUIRED
+      name: 'A DATE', // REQUIRED
+      value: new Date() // String, Number, or Date - REQUIRED
+    }]
+  }]
+}, function (err, response) {
+  /*
+  response = {
+    responseCode: 'Success',
+    orderId: '123-456',
+    mockOrderEvent: false,
+    storeId: 'YOURSTORE',
+    reasonCode: '',
+    reasonCodeDescription: ''
+  };
+  */
+});
 ```
 
 ## CHANGELOG
 
+- **0.1.5:** Implemented risk assessment API endpoint. It's largely untested and prone to lots of bugs.
 - **0.1.4:** Fixes for PayPal doAuthorization endpoint.
 - **0.1.3:** Add method to get a nonce for use with Radial's JavaScript library. SetExpress returns a `redirectUrl` in addition to the raw token. Finalize doExpress method.
 - **0.1.2:** Add PayPal doExpress and doAuthorization endpoints.
