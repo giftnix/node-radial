@@ -22,6 +22,26 @@ var radial = require('node-radial').configure({
 });
 ```
 
+Alternately, you can pass the module an object with multiple store configurations, if you have multiple stores operating on Radial.
+
+```
+var radial = require('node-radial').configure({
+  stores: [{
+    storeCode: 'STORE1',
+    customStoreCode: 'MyStore1', // OPTIONAL
+    apiKey: '',
+    uriBaseDomain: ''
+  },{
+    storeCode: 'STORE2',
+    customStoreCode: 'MyStore2', // OPTIONAL
+    apiKey: '',
+    uriBaseDomain: ''
+  }]
+});
+```
+
+If you set up the module with multiple stores, each request to the module requires a `storeCode` to be passed in the request options. You can either pass the Radial defined store code, or the store code that you defined in the `customStoreCode` parameter during setup.
+
 ### Optional Setup Parameters
 
 - `apiVersion` - API version as a numeric string **_defaults to '1.0'_**
@@ -432,6 +452,7 @@ RADIAL.risk.assess({
 
 ## CHANGELOG
 
+- **0.2.0:** Allows you to set up multiple stores in configuration.
 - **0.1.5:** Implemented risk assessment API endpoint. It's largely untested and prone to lots of bugs.
 - **0.1.4:** Fixes for PayPal doAuthorization endpoint.
 - **0.1.3:** Add method to get a nonce for use with Radial's JavaScript library. SetExpress returns a `redirectUrl` in addition to the raw token. Finalize doExpress method.

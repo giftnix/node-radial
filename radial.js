@@ -17,19 +17,32 @@
   /* PUBLIC FUNCTIONS */
 
   Radial.configure = function (configParams) {
-    if (!configParams) {
+    if (!configParams || typeof configParams !== 'object') {
       throw new Error('Please include params for the Radial module constructor.');
-    } else if (!configParams.storeCode) {
-      throw new Error('Missing "storeCode" in the Radial module params.');
-    } else if (!configParams.apiKey) {
-      throw new Error('Missing "apiKey" in the Radial module params.');
-    } else if (!configParams.uriBaseDomain) {
-      throw new Error('Missing "uriBaseDomain" in the Radial module params.');
     }
 
-    params = configParams;
-    params.apiVersion = configParams.apiVersion ? configParams.apiVersion.toString() : defaults.apiVersion;
-    params.environment = configParams.environment ? configParams.environment : defaults.environment;
+    // accept either params for one store, or an array of store params
+    var stores = [];
+
+    if (configParams.stores) {
+      configParams.stores.forEach((storeParams) => {
+        var code = storeParams.customStoreCode ?
+          storeParams.customStoreCode : storeParams.storeCode;
+        stores.push(storeParams);
+      });
+    } else {
+      var code = configParams.customStoreCode ?
+        configParams.customStoreCode : configParams.storeCode;
+      stores.push(configParams);
+    }
+
+    // set the singleton params object
+    params = {
+      stores: stores,
+      apiVersion: configParams.apiVersion ? configParams.apiVersion.toString() : defaults.apiVersion,
+      environment: configParams.environment ? configParams.environment : defaults.environment
+    };
+
     Radial.params = params;
 
     Radial.nonce = require('./lib/nonce');
