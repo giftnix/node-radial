@@ -1,6 +1,6 @@
 {
   "name": "node-radial",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "NodeJS SDK for the Radial APIs",
   "main": "radial.js",
   "scripts": {},

@@ -452,6 +452,7 @@ RADIAL.risk.assess({
 
 ## CHANGELOG
 
+- **0.2.1:** Fixes to risk assessment XML request and API response.
 - **0.2.0:** Allows you to set up multiple stores in configuration.
 - **0.1.5:** Implemented risk assessment API endpoint. It's largely untested and prone to lots of bugs.
 - **0.1.4:** Fixes for PayPal doAuthorization endpoint.
