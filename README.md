@@ -452,6 +452,7 @@ RADIAL.risk.assess({
 
 ## CHANGELOG
 
+- **0.2.2:** Fixes to risk assessment handling of external risk results, payment amount, and server timezone offset.
 - **0.2.1:** Fixes to risk assessment XML request and API response.
 - **0.2.0:** Allows you to set up multiple stores in configuration.
 - **0.1.5:** Implemented risk assessment API endpoint. It's largely untested and prone to lots of bugs.
