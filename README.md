@@ -486,7 +486,7 @@ router.post('v1/webhooks/radial/risk-order-status', function (req, res, next) {
   radial.webhooks.riskOrderStatus(req, function(err, data) {
     if (err) {
       // send Radial a 400 or 500 so that they can retry the request
-      return res.status(500).send(err);
+      return res.status(err.status).send(err.type + ': ' + err.message);
     }
     // send a 200 so that Radial will clear the event
     return res.send('Order risk status received.');
