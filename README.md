@@ -46,6 +46,7 @@ If you set up the module with multiple stores, each request to the module requir
 
 - `apiVersion` - API version as a numeric string **_defaults to '1.0'_**
 - `environment` - Set to either `development` or `production` **_defaults to the value of `NODE_ENV` or `development` if not set_**
+- `webhooks` - If you plan to use a webhook route, please pass an object with authentication data for each route. See the section on [Webhooks](#webhooks) for details on setting this up.
 
 ## Tokenization and 3D Secure
 
@@ -247,7 +248,7 @@ radial.paypal.doAuthorization({
 
 ## Fraud Management Processing
 
-## Risk Assessment
+### Risk Assessment
 
 This API has a lot of intricacies, with lengthy and complex requirements and optional parameters. Please refer to the Radial documentation to know what is required, and the type of data needed for the API. Because of the API's complexity and wide possibility space, `node-radial` does very little to error check for you. It simply maps your block of JSON data to Radial's required XML data. Below is an example with all possible parameters entered.
 
@@ -447,6 +448,49 @@ RADIAL.risk.assess({
     reasonCodeDescription: ''
   };
   */
+});
+```
+
+## Webhooks
+
+### Config
+
+When you configure Radial, include webhook authorization info for any endpoints you plan to use.
+
+```
+var radial = require('node-radial').configure({
+  // ...
+  webhooks: {
+    paymentAuthCancel: {
+      username: '',
+      password: ''
+    },
+    paymentSettlementStatus: {
+      username: '',
+      password: ''
+    },
+    riskOrderStatus: {
+      username: '',
+      password: ''
+    }
+  }
+});
+```
+
+### Risk Order Status
+
+At your webhook endpoint, pass the request object to authorize and parse the message.
+
+```
+router.post('v1/webhooks/radial/risk-order-status', function (req, res, next) {
+  radial.webhooks.riskOrderStatus(req, function(err, data) {
+    if (err) {
+      // send Radial a 400 or 500 so that they can retry the request
+      return res.status(500).send(err);
+    }
+    // send a 200 so that Radial will clear the event
+    return res.send('Order risk status received.');
+  });
 });
 ```
 
