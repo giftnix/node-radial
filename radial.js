@@ -39,7 +39,6 @@
     // set the singleton params object
     params = {
       stores: stores,
-      webhooks: webhooks,
       apiVersion: configParams.apiVersion ? configParams.apiVersion.toString() : defaults.apiVersion,
       environment: configParams.environment ? configParams.environment : defaults.environment
     };
