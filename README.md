@@ -496,6 +496,7 @@ router.post('v1/webhooks/radial/risk-order-status', function (req, res, next) {
 
 ## CHANGELOG
 
+- **0.2.3:** `ItemListRPH` was missing from the fraud assessment request. The module now generates this string automatically from the item list.
 - **0.2.2:** Fixes to risk assessment handling of external risk results, payment amount, and server timezone offset.
 - **0.2.1:** Fixes to risk assessment XML request and API response.
 - **0.2.0:** Allows you to set up multiple stores in configuration.
