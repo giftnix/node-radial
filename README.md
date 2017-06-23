@@ -246,6 +246,78 @@ radial.paypal.doAuthorization({
 });
 ```
 
+### Payment Settlement
+
+When you are ready to capture funds from the customer's form of payment.
+
+<https://docs.ptf.radial.com/Content/Topics/events/events-payment-settlement.htm>
+
+```
+radial.payments.createSettlement({
+  paymentContext: {
+    orderId: '',
+    accountUniqueId: '',
+    accountUniqueIdIstoken: false
+  },
+  invoiceId: '', // REQUIRED
+  currencyCode: 'USD', // REQUIRED
+  amount: 12.34, // REQUIRED
+  taxAmount: 1.18, // REQUIRED
+  settlementType: 'Debit', // REQUIRED ("Debit" or "Credit")
+  authorizationResponseCode: '',
+  authorizationDate: new Date(),
+  expirationDate: new Date(),
+  clientContext: '',
+  finalDebit: '',
+  omsOrderId: '',
+  billingAddress: {
+    line1: '', // REQUIRED
+    line2: '',
+    line3: '',
+    line4: '',
+    city: '', // REQUIRED
+    mainDivision: '',
+    countryCode: '', // REQUIRED
+    postalCode: ''
+  },
+  personName: {
+    honorific: '',
+    firstName: '',
+    middleName: '',
+    lastName: '' // REQUIRED
+  },
+  invoiceData: {
+    VATData: {
+      invoiceNumber: '',
+      invoiceDate: '',
+      originalVATInvoiceDetails: {
+        originalVATInvoice: {
+          invoiceNumber: '',
+          invoiceDate: '',
+        }
+      },
+      VATRateInfo: {
+        rate: 0.2,
+        registrationId: '',
+        currencyCode: 'USD', // REQUIRED
+        amount: 1.23 // REQUIRED
+      },
+      currencyCode: 'USD', // REQUIRED
+      balanceClearedAmount: 1.23,
+      invoicePresentment: 'email' // REQUIRED
+    },
+    lineItems: [],
+    customAttributes: {}
+  }
+}, function(err, response) {
+  /*
+  response = {
+
+  };
+  */
+});
+```
+
 ## Fraud Management Processing
 
 ### Risk Assessment
