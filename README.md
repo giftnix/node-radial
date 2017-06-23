@@ -250,12 +250,16 @@ radial.paypal.doAuthorization({
 
 When you are ready to capture funds from the customer's form of payment.
 
+PLEASE NOTE. None of the `invoiceData` in the schema for this API is completed. It seems uncommon to include this data in the request, so I didn't waste my time with it. If you need it, start a pull request!
+
+This module will determine whether to send a `PaymentContext` or a `PaymentContextBase` based on the presents of `accountUniqueId`.
+
 <https://docs.ptf.radial.com/Content/Topics/events/events-payment-settlement.htm>
 
 ```
 radial.payments.createSettlement({
-  paymentContext: {
-    orderId: '',
+  paymentContext: { // REQUIRED
+    orderId: '', // REQUIRED
     accountUniqueId: '',
     accountUniqueIdIstoken: false
   },
@@ -268,7 +272,7 @@ radial.payments.createSettlement({
   authorizationDate: new Date(),
   expirationDate: new Date(),
   clientContext: '',
-  finalDebit: '',
+  finalDebit: false,
   omsOrderId: '',
   billingAddress: {
     line1: '', // REQUIRED
@@ -285,29 +289,6 @@ radial.payments.createSettlement({
     firstName: '',
     middleName: '',
     lastName: '' // REQUIRED
-  },
-  invoiceData: {
-    VATData: {
-      invoiceNumber: '',
-      invoiceDate: '',
-      originalVATInvoiceDetails: {
-        originalVATInvoice: {
-          invoiceNumber: '',
-          invoiceDate: '',
-        }
-      },
-      VATRateInfo: {
-        rate: 0.2,
-        registrationId: '',
-        currencyCode: 'USD', // REQUIRED
-        amount: 1.23 // REQUIRED
-      },
-      currencyCode: 'USD', // REQUIRED
-      balanceClearedAmount: 1.23,
-      invoicePresentment: 'email' // REQUIRED
-    },
-    lineItems: [],
-    customAttributes: {}
   }
 }, function(err, response) {
   /*
