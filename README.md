@@ -257,7 +257,7 @@ This module will determine whether to send a `PaymentContext` or a `PaymentConte
 <https://docs.ptf.radial.com/Content/Topics/events/events-payment-settlement.htm>
 
 ```
-radial.payments.createSettlement({
+radial.payments.settlement.create({
   paymentContext: { // REQUIRED
     orderId: '', // REQUIRED
     accountUniqueId: '',
@@ -293,7 +293,7 @@ radial.payments.createSettlement({
 }, function(err, response) {
   /*
   response = {
-
+    received: true
   };
   */
 });
