@@ -51,6 +51,7 @@
     Radial.creditCard = require('./lib/payments/creditCard/index');
     Radial.paypal = require('./lib/payments/paypal/index');
     Radial.risk = require('./lib/risk/index');
+    Radial.webhooks = require('./lib/webhooks/index');
 
     return this;
   };
