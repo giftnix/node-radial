@@ -496,6 +496,7 @@ router.post('v1/webhooks/radial/risk-order-status', function (req, res, next) {
 
 ## CHANGELOG
 
+- **0.3.4:** Fix bad reference on webhook response.
 - **0.3.3:** Path fixes.
 - **0.3.2:** Working on webhook authentication.
 - **0.3.1:** Path fixes.
