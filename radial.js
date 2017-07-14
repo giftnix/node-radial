@@ -52,6 +52,8 @@
     Radial.paypal = require('./lib/payments/paypal/index');
     Radial.risk = require('./lib/risk/index');
     Radial.payments = require('./lib/payments/index');
+    Radial.webhooks = require('./lib/webhooks/index');
+    Radial.utils = require('./lib/utils');
 
     return this;
   };

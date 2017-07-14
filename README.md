@@ -549,6 +549,11 @@ router.post('v1/webhooks/radial/risk-order-status', function (req, res, next) {
 
 ## CHANGELOG
 
+- **0.3.4:** Fix bad reference on webhook response.
+- **0.3.3:** Path fixes.
+- **0.3.2:** Working on webhook authentication.
+- **0.3.1:** Path fixes.
+- **0.3.0:** Working on body parser. Not fully working yet.
 - **0.2.4:** Logging cleanup.
 - **0.2.3:** `ItemListRPH` was missing from the fraud assessment request. The module now generates this string automatically from the item list.
 - **0.2.2:** Fixes to risk assessment handling of external risk results, payment amount, and server timezone offset.
