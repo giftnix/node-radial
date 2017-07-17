@@ -506,6 +506,8 @@ RADIAL.risk.assess({
 
 ## Webhooks
 
+The webhooks part of this API wrapper is PROBABLY NOT READY FOR PRIMETIME yet. I can't guarantee that it's going to work.
+
 ### Config
 
 When you configure Radial, include webhook authorization info for any endpoints you plan to use.
@@ -547,8 +549,26 @@ router.post('v1/webhooks/radial/risk-order-status', function (req, res, next) {
 });
 ```
 
+### Payment Settlement Status
+
+Radial's settlement API is asynchronous, so you will have to set up a webhook endpoint to receive the status of a settlement.
+
+```
+router.post('v1/webhooks/radial/payment-settlement-status', function (req, res, next) {
+  radial.webhooks.paymentSettlementStatus(req, function(err, data) {
+    if (err) {
+      // send Radial a 400 or 500 so that they can retry the request
+      return res.status(err.status).send(err.type + ': ' + err.message);
+    }
+    // send a 200 so that Radial will clear the event
+    return res.send('Payment settlement status received.');
+  });
+});
+```
+
 ## CHANGELOG
 
+- **0.3.5:** Adding payment settlement status webhook endpoint. Webhooks are still not quite ready to go.
 - **0.3.4:** Fix bad reference on webhook response.
 - **0.3.3:** Path fixes.
 - **0.3.2:** Working on webhook authentication.
