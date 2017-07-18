@@ -568,6 +568,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', function (req, res, 
 
 ## CHANGELOG
 
+- **0.3.7:** Risk assessment reply improvement.
 - **0.3.6:** Improve response handling for risk assessment webhook.
 - **0.3.5:** Adding payment settlement status webhook endpoint. Webhooks are still not quite ready to go.
 - **0.3.4:** Fix bad reference on webhook response.
