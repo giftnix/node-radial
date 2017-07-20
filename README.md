@@ -574,6 +574,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.3.9:** Fix for stupid auto-formatter error.
 - **0.3.8:** Add details and parsing for settlement status webhook reply.
 - **0.3.7:** Risk assessment reply improvement.
 - **0.3.6:** Improve response handling for risk assessment webhook.
