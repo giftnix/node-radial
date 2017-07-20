@@ -504,6 +504,45 @@ RADIAL.risk.assess({
 });
 ```
 
+### Order Confirmation
+
+After you receive a fraud decision, send Radial an order confirmation to let them know how the order was handled (e.g. shipped, cancelled, etc).
+
+<https://docs.ptf.radial.com/Content/Topics/risk/risk-order-confirmation.htm>
+
+```
+RADIAL.risk.confirm({
+  orderId: '123-456',
+  statusDate: new Date(),
+  confirmationType: 'SHIPMENT',
+  orderStatus: 'SHIPPED',
+  orderStatusReason: '',
+  lineDetails: [{
+    SKU: '',
+    quantity: 2,
+    itemStatus: 'SHIPPED',
+    trackingNumber: '',
+    shippingVendorCode: 'UPS',
+    deliveryMethod: 'STANDARD',
+    shipScheduledDate: new Date(),
+    shipActualDate: new Date()
+  }],
+  customAttributes: {
+    attributeOneName: attributeOneValue,
+    attributeTwoName: attributeTwoValue
+  }
+}, function (err, response) {
+  /*
+  response = {
+    orderId: '123-456',
+    storeCode: '',
+    createTimestamp: new Date(),
+    orderConfirmationAcknowledgement: true
+  };
+  */
+});
+```
+
 ## Webhooks
 
 The webhooks part of this API wrapper is PROBABLY NOT READY FOR PRIMETIME yet. I can't guarantee that it's going to work.
@@ -574,6 +613,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.4.0:** Add Risk Order Confirmation endpoint.
 - **0.3.10:** Parsing fix for payment settlement status list.
 - **0.3.9:** Fix for stupid auto-formatter error.
 - **0.3.8:** Add details and parsing for settlement status webhook reply.
