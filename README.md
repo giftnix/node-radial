@@ -613,6 +613,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.4.2:** Parsing fix for risk status list.
 - **0.4.1:** Parse amount as a float on settlement webhook response.
 - **0.4.0:** Add Risk Order Confirmation endpoint.
 - **0.3.10:** Parsing fix for payment settlement status list.
