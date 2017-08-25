@@ -150,7 +150,8 @@ radial.paypal.getExpress({
       city: '',
       mainDivision: '',
       countryCode: '',
-      postalCode: ''
+      postalCode: '',
+      status: 'Confirmed'
     },
     shippingAddress: {
       line1: '',
@@ -160,7 +161,8 @@ radial.paypal.getExpress({
       city: '',
       mainDivision: '',
       countryCode: '',
-      postalCode: ''
+      postalCode: '',
+      status: 'Unconfirmed'
     },
     shipToName: ''
   }
@@ -613,6 +615,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.4.3:** Add missing `AddressStatus` in PayPal `getExpress` response.
 - **0.4.2:** Parsing fix for risk status list.
 - **0.4.1:** Parse amount as a float on settlement webhook response.
 - **0.4.0:** Add Risk Order Confirmation endpoint.
