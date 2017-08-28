@@ -615,6 +615,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.4.4:** Fix `paymentCardOptions` missing from fraud request.
 - **0.4.3:** Add missing `AddressStatus` in PayPal `getExpress` response.
 - **0.4.2:** Parsing fix for risk status list.
 - **0.4.1:** Parse amount as a float on settlement webhook response.
