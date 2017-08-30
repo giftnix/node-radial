@@ -44,6 +44,7 @@
     };
 
     if (configParams.webhooks) params.webhooks = configParams.webhooks;
+    if (configParams.debugMode === true) params.debugMode = true;
 
     Radial.params = params;
 
