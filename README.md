@@ -102,7 +102,8 @@ radial.paypal.setExpress({
   taxTotal: 1.23,
   lineItems: lineItems,
   installment: false, // optional
-  recurring: false // optional
+  recurring: false, // optional
+  solutionType: 'Sole' // optional
 }, function(err, response) {
   /*
   response = {
@@ -615,6 +616,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.4.9:** Add functionality to use `SolutionType` field in PayPal SetExpress.
 - **0.4.8:** Debug logs for settlement submission.
 - **0.4.7:** Test for optional params in risk reply.
 - **0.4.6:** Update webhook failure status codes.
