@@ -616,6 +616,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.4.10:** Improve checks for optional fields like Address and Telephone on fraud assessment.
 - **0.4.9:** Add functionality to use `SolutionType` field in PayPal SetExpress.
 - **0.4.8:** Debug logs for settlement submission.
 - **0.4.7:** Test for optional params in risk reply.
