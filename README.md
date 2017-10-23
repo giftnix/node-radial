@@ -616,6 +616,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.5.0:** Adds `payments.auth.cancel` endpoint to cancel a payment authorization.
 - **0.4.11:** Improved optional checks for Address fields.
 - **0.4.10:** Improve checks for optional fields like Address and Telephone on fraud assessment.
 - **0.4.9:** Add functionality to use `SolutionType` field in PayPal SetExpress.
