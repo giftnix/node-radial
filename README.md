@@ -654,6 +654,7 @@ router.post('v1/webhooks/radial/payment-settlement-status', xmlBodyParser(), fun
 
 ## CHANGELOG
 
+- **0.6.1:** Modify date formatting for loyalty signup date.
 - **0.6.0:** Adds `risk.status` endpoint to retrieve a fraud assessment status.
 - **0.5.0:** Adds `payments.auth.cancel` endpoint to cancel a payment authorization.
 - **0.4.11:** Improved optional checks for Address fields.
