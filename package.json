@@ -19,8 +19,9 @@
   "author": "Giftnix",
   "license": "MIT",
   "dependencies": {
-    "request": "2.x.x",
-    "xml-js": "1.x.x"
+    "moment": "^2.20.1",
+    "request": "^2.83.0",
+    "xml-js": "^1.6.1"
   },
   "devDependencies": {}
 }
